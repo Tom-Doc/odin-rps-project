@@ -32,35 +32,48 @@ const computerChoice = function () {
     return compSelection;
 }
 
-
+let playerScore = 0;
+let computerScore = 0;
+let tie = 0;
+let winnerOfGame = "";
 
 
 const playRound = function (playerSelection, computerSelection) {
     //rock Scenarios
     if (playerSelection == "rock" && computerSelection == "scissors") {
+        playerScore +=1;
         return "You Win! - Rock beats Scissors";
+        
     } else if (playerSelection == "rock" && computerSelection == "paper") {
+        computerScore +=1;
         return "Computer Wins! - Paper beats Rock";
     } else if (playerSelection == "rock" && computerSelection == "rock") {
+        tie +=1;
         return "Draw! You both selected Rock."
     }
     // scissors Scenarios
     else if (playerSelection == "scissors" && computerSelection == "paper") {
+        playerScore +=1;
         return "You Win! - Scissors beats Paper";
     } else if (playerSelection == "scissors" && computerSelection == "rock") {
+        computerScore +=1;
         return "Computer Wins! - Rock beats Scissors";
     } else if (playerSelection == "scissors" && computerSelection == "scissors") {
+        tie +=1;
         return "Draw! You both selected Scissors";
     }
     //paper Scenarios
     else if (playerSelection == "paper" && computerSelection == "rock") {
+        playerScore +=1;
         return "You Win! - Paper beats Rock";
     } else if (playerSelection == "paper" && computerSelection == "scissors") {
+        computerScore +=1;
         return "Computer wins! - Scissors beats Paper";
     } else if (playerSelection == "paper" && computerSelection == "paper") {
-        return "Draw! You both selected Paper"
+        tie +=1;
+        return "Draw! You both selected Paper";
     } else {
-        return "Uh oh! Something went wrong. Please try again."
+        return "Uh oh! Something went wrong. Please try again.";
     }
 }
 
@@ -70,10 +83,19 @@ const game = function() {
         const computerSelection = computerChoice();
         console.log(`You selected ${playerSelection}`);
         console.log(`The computer selected ${computerSelection}`);
-        
         console.log(playRound(playerSelection, computerSelection));
-     }
+        console.log(playerScore, computerScore, tie);
+       
+    }
 }
+
+
+// if (playerScore >= 3) {
+//     console.log(`You win!`);
+// } else  if (computerScore >= 3) {
+//     console.log(`Computer wins!`);
+// }
+// }
 // const playerSelection = playerChoice();
 // const computerSelection = computerChoice();
 // console.log(`You selected ${playerSelection}`);
