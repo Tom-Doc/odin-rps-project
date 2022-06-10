@@ -26,7 +26,6 @@ const playRound = function(playerSelection, computerSelection) {
     if (playerSelection === "rock" && computerSelection === "scissors") {
         playerScore++;
         return "You Win! - Rock beats Scissors";
-        
     } else if (playerSelection === "rock" && computerSelection === "paper") {
         computerScore++;
         return "Computer Wins! - Paper beats Rock";
@@ -71,16 +70,16 @@ const game = function() {
         // playRound(playerSelection, computerSelection);
         console.log(`You selected ${playerSelection}`);
         console.log(`The computer selected ${computerSelection}`);
-        console.log(playRound(playerSelection, computerSelection));  //<-- Note to future self. Your score was being doubled because you had your playRound function here as well as above. When you remove the console.log everything will still work you just wont see the ""
+        console.log(playRound(playerSelection, computerSelection));  //<-- Note to future self: Your score was being doubled because you had your playRound function here as well as above. When you remove the console.log everything will still work you just wont see the "You win! - Paper beats Rock" or other outcomes in the console.
         console.log(playerScore, computerScore, tie);
         }
-        if (playerScore > computerScore && playerScore >= tie) {
+        if (playerScore > computerScore) {                          // <--- Note to future self: The scoring currently doesnt take into consideration replaying a hand if you tie. So if a player score is 0, computer score is 2, and a tie is 3 then it will still come back saying that computer won. Which yes, technically the computer did win, but later we will need to code in replaying hands when there is a tie.                
             console.log("You beat the computer!");
-        } else if (computerScore > playerScore && computerScore >= tie) {
+        } else if (computerScore > playerScore) {
             console.log("Computer wins. Try again!");
         } else {
             console.log("The game has ended in a tie.");  
-        }
+        } 
 }
 
 game();
